@@ -114,11 +114,12 @@ npx react-native run-ios
 ### Testing
 The app has been tested on:
 
--Android (Emulator & Physical Device)
+-Android (Android Studio Emulator)
 
 -iOS (via Expo Snack - Windows development environment limitation)
 
 ### Learning Objectives Achieved
+
 -Implement platform-specific UI components using file naming conventions
 
 -Apply Platform.OS and Platform.select() for conditional styling
