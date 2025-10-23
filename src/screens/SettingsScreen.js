@@ -10,8 +10,9 @@ import {
     StatusBar,
     Alert,
 } from 'react-native';
-import PlatformButton from '../components/PlatformButton';
+/*import PlatformButton from '../components/PlatformButton';*/
 import { getCurrentPlatformColors, isIOS } from '../utils/platform';
+import Button from '../components/PlatformButton';
 
 const SettingsScreen = () => {
     const colors = getCurrentPlatformColors();
@@ -130,7 +131,7 @@ const SettingsScreen = () => {
                 {/* Action Buttons */}
                 <View style={styles.section} />
 
-                <PlatformButton
+                <Button
                     title="Primary Action"
                     variant="primary"
                     onPress={() =>
@@ -140,7 +141,7 @@ const SettingsScreen = () => {
 
                 <View style={styles.buttonSpacing} />
 
-                <PlatformButton
+                <Button
                     title="Secondary Action"
                     variant="secondary"
                     onPress={() => Alert.alert('Info', 'Secondary button pressed')}
@@ -148,7 +149,7 @@ const SettingsScreen = () => {
 
                 <View style={styles.buttonSpacing} />
 
-                <PlatformButton
+                <Button
                     title="Reset Settings"
                     variant="primary"
                     onPress={() => {
