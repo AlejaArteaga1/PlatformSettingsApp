@@ -1,97 +1,127 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Platform-Specific Settings App
 
-# Getting Started
+A React Native mobile application demonstrating platform-specific UI components and design patterns for iOS and Android.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Project Overview
 
-## Step 1: Start Metro
+This lab project showcases the implementation of platform-specific user interfaces following Apple's Human Interface Guidelines and Google's Material Design principles. The app features a settings screen with platform-appropriate styling, components, and interactions.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Lab Details
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- **Course:** CPAN 213 - Cross-Platform Mobile Application Development
+- **Lab:** #05 - Implementing Platform-Specific Features
+- **Student:** Alejandra Arteaga Diaz
+- **Student ID:** n01710855
+- **Date:** October 23 2025
 
-```sh
-# Using npm
-npm start
+## Features
 
-# OR using Yarn
-yarn start
-```
+### Platform-Specific Implementations
 
-## Step 2: Build and run your app
+- **iOS Design:**
+  - Rounded buttons (12pt border radius)
+  - Shadow effects for depth
+  - SF Pro typography style
+  - iOS-style switches and headers
+  - Normal case button text
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+- **Android Design:**
+  - Sharp buttons (4pt border radius)
+  - Elevation for depth
+  - Roboto typography style
+  - Material Design switches
+  - UPPERCASE button text
 
-### Android
+### Components
+- Platform-aware buttons with variants (primary/secondary)
+- Settings toggle rows with platform-appropriate switches
+- Platform information display section
+- Responsive header with platform-specific styling
 
-```sh
-# Using npm
-npm run android
+## Technical Implementation
 
-# OR using Yarn
-yarn android
-```
+### Platform Detection
+javascript
+// Platform-specific file loading
+const PlatformButton = Platform.select({
+  ios: () => require('./PlatformButton.ios').default,
+  android: () => require('./PlatformButton.android').default,
+})();
 
-### iOS
+// Platform-specific colors and styles
+export const PLATFORM_COLORS = {
+  ios: { primary: '#007AFF', background: '#f2f2f7' },
+  android: { primary: '#2196F3', background: '#f5f5f5' }
+};
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+### Project Structure
+PlatformSettingsApp/
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+├── src/
 
-```sh
-bundle install
-```
+│   ├── components/
 
-Then, and every time you update your native dependencies, run:
+│   │   └── PlatformButton/
 
-```sh
-bundle exec pod install
-```
+│   │       ├── index.js
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+│   │       ├── PlatformButton.ios.js
 
-```sh
-# Using npm
-npm run ios
+│   │       └── PlatformButton.android.js
 
-# OR using Yarn
-yarn ios
-```
+│   ├── screens/
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+│   │   └── SettingsScreen.js
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+│   └── utils/
 
-## Step 3: Modify your app
+│       └── platform.js
 
-Now that you have successfully run the app, let's make changes!
+├── App.js
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+└── package.json
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+### Installation and Setup
+1. Clone the repository
+git clone https://github.com/your-username/PlatformSettingsApp.git
+cd PlatformSettingsApp
+2. Install dependencies
+npm install
+3. Install iOS dependencies (macOS only)
+cd ios && pod install && cd ..
+Run the application
+# Android
+npx react-native run-android
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+# iOS (macOS only)
+npx react-native run-ios
 
-## Congratulations! :tada:
+### Testing
+The app has been tested on:
 
-You've successfully run and modified your React Native App. :partying_face:
+-Android (Emulator & Physical Device)
 
-### Now what?
+-iOS (via Expo Snack - Windows development environment limitation)
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+### Learning Objectives Achieved
+-Implement platform-specific UI components using file naming conventions
 
-# Troubleshooting
+-Apply Platform.OS and Platform.select() for conditional styling
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+-Handle basic platform-specific permissions
 
-# Learn More
+-Create components that follow iOS and Android design guidelines
 
-To learn more about React Native, take a look at the following resources:
+### Dependencies
+React Native 0.82
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+react-native-vector-icons
+
+Platform API (built-in)
+
+### Development Notes
+Development Environment: Windows (Android focus)
+
+iOS Testing: Conducted via Expo Snack due to platform limitations
+
+Code Quality: Follows React Native best practices with proper component separation
