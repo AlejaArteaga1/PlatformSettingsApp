@@ -41,17 +41,24 @@ This lab project showcases the implementation of platform-specific user interfac
 ## Technical Implementation
 
 ### Platform Detection
-javascript
 // Platform-specific file loading
+
 const PlatformButton = Platform.select({
+
   ios: () => require('./PlatformButton.ios').default,
+  
   android: () => require('./PlatformButton.android').default,
+  
 })();
 
 // Platform-specific colors and styles
+
 export const PLATFORM_COLORS = {
+
   ios: { primary: '#007AFF', background: '#f2f2f7' },
+  
   android: { primary: '#2196F3', background: '#f5f5f5' }
+  
 };
 
 ### Project Structure
@@ -83,13 +90,21 @@ PlatformSettingsApp/
 
 ### Installation and Setup
 1. Clone the repository
+
 git clone https://github.com/your-username/PlatformSettingsApp.git
+
 cd PlatformSettingsApp
+
 2. Install dependencies
+   
 npm install
+
 3. Install iOS dependencies (macOS only)
+   
 cd ios && pod install && cd ..
+
 Run the application
+
 # Android
 npx react-native run-android
 
